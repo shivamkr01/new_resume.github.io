@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shivam Kumar | Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container nav-row">
+      <div class="logo">Shivam Kumar</div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="controls">
+        <button id="theme-toggle" class="theme-btn" aria-pressed="false" aria-label="Toggle theme">🌙</button>
+        <button id="open-add" class="btn small ghost" title="Add project">＋ Add Project</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero reveal">
+      <div class="container hero-inner">
+        <img src="" alt="Profile photo" id="profile-pic" class="profile-pic reveal-item">
+        <h1 class="hero-title reveal-item">
+          Hello, I'm <span id="typing" class="typing">Shivam Kumar</span><span class="cursor" aria-hidden="true">|</span>
+        </h1>
+        <p class="hero-sub reveal-item">A passionate developer specializing in Frontend, Full Stack, and Data Analytics.</p>
+
+        <div class="hero-ctas reveal-item">
+          <a class="btn" href="#projects">View My Work</a>
+          <a class="btn outline" href="Shivam_resume.pdf" download>Download Resume</a>
+        </div>
+
+        <div class="socials reveal-item" aria-hidden="false">
+          <a href="https://github.com/shivamkr01" target="_blank" rel="noopener">🐙 GitHub</a>
+          <a href="https://linkedin.com/in/shivamkr01" target="_blank" rel="noopener">💼 LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about reveal">
+      <div class="container">
+        <h2 class="section-title reveal-item">About Me</h2>
+        <p class="reveal-item">
+          I'm currently pursuing MCA at CMR University, Bangalore.
+          I’ve done internships in frontend development and built several full-stack projects.
+          My interests include web development, software engineering, and data analytics.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills reveal">
+      <div class="container">
+        <h2 class="section-title reveal-item">Skills</h2>
+        <div class="skills-grid reveal-group" id="skills-grid">
+          <span class="skill reveal-item">HTML</span>
+          <span class="skill reveal-item">CSS</span>
+          <span class="skill reveal-item">JavaScript</span>
+          <span class="skill reveal-item">React</span>
+          <span class="skill reveal-item">Tailwind</span>
+          <span class="skill reveal-item">Firebase</span>
+          <span class="skill reveal-item">Java</span>
+          <span class="skill reveal-item">Spring Boot</span>
+          <span class="skill reveal-item">Python</span>
+          <span class="skill reveal-item">SQL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects reveal">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title reveal-item">Projects</h2>
+          <p class="muted reveal-item">Click <strong>Check</strong> to preview or <strong>Add Project</strong> to add one.</p>
+        </div>
+
+        <div id="project-grid" class="project-grid reveal-group" aria-live="polite">
+          <!-- project cards injected here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact reveal">
+      <div class="container">
+        <h2 class="section-title reveal-item">Contact Me</h2>
+        <p class="reveal-item">Let’s collaborate or just say hello 👋</p>
+        <a class="btn reveal-item" href="mailto:shivamkumar@example.com">Say Hello</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer reveal">
+    <div class="container footer-inner">
+      <div class="social-links reveal-item">
+        <a href="https://github.com/shivamkr01" target="_blank" rel="noopener">🐙 GitHub</a>
+        <a href="https://linkedin.com/in/shivamkr01" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a href="mailto:shivamkumar@example.com">📧 Email</a>
+      </div>
+      <div class="copyright reveal-item">© 2025 Shivam Kumar. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- MODAL: Check Project -->
+  <div id="modal-overlay" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <img id="modal-image" alt="Project snapshot" />
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <div class="modal-actions">
+        <a id="modal-link" class="btn" target="_blank" rel="noopener">Open Project</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Add Project -->
+  <div id="add-overlay" class="modal-overlay" aria-hidden="true">
+    <div class="modal small" role="dialog" aria-modal="true" aria-labelledby="add-title">
+      <button class="modal-close" id="add-close" aria-label="Close">✕</button>
+      <h3 id="add-title">Add Project</h3>
+
+      <form id="add-project-form" class="form">
+        <label>Title
+          <input name="title" required maxlength="80" placeholder="Project name" />
+        </label>
+
+        <label>Description
+          <textarea name="desc" rows="3" required placeholder="Short description"></textarea>
+        </label>
+
+        <label>Project link (optional)
+          <input name="link" placeholder="https://..." />
+        </label>
+
+        <label>Image (optional: upload a file or paste an image URL)
+          <input type="file" name="imageFile" accept="image/*" />
+          <input name="imageURL" placeholder="or image URL (optional)" />
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Save</button>
+          <button type="button" id="add-cancel" class="btn outline">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
