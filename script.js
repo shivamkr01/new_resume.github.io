@@ -207,7 +207,7 @@ if (openAdd) {
   openAdd.style.display = 'none';
   // Ask for password when the site loads
   const pass = prompt('Enter admin password (leave blank if visitor):');
-  if (pass === 'Shivam@2025') {   // <-- change this password
+  if (pass === 'Shivam@2025') {   // <-- my password
     openAdd.style.display = 'inline-block';
   }
 }
@@ -312,4 +312,5 @@ addOverlay && addOverlay.addEventListener('click', (e) => {
 
   document.addEventListener('DOMContentLoaded', init);
 })();
+
 
