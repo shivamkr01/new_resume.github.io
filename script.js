@@ -1,7 +1,4 @@
 /* script.js
-   - Robust typing effect
-   - Theme toggle with persistence
-   - Reveal animations using IntersectionObserver
    - Projects: default demo projects (placeholders), Check modal, Add Project form (file or URL), localStorage persistence
 */
 
@@ -200,25 +197,38 @@
 
   /* ------------------ Add Project modal + form ------------------ */
   const addOverlay = qs('#add-overlay');
-  const openAdd = qs('#open-add');
-  const addClose = qs('#add-close');
-  const addCancel = qs('#add-cancel');
-  const addForm = qs('#add-project-form');
+const openAdd = qs('#open-add');
+const addClose = qs('#add-close');
+const addCancel = qs('#add-cancel');
+const addForm = qs('#add-project-form');
 
-  function openAddModal() {
-    addOverlay.classList.add('open');
-    addOverlay.setAttribute('aria-hidden', 'false');
-    qs('input[name="title"]', addForm).focus();
+/* Hide "Add Project" button by default */
+if (openAdd) {
+  openAdd.style.display = 'none';
+  // Ask for password when the site loads
+  const pass = prompt('Enter admin password (leave blank if visitor):');
+  if (pass === 'Shivam@2025') {   // <-- change this password
+    openAdd.style.display = 'inline-block';
   }
-  function closeAddModal() {
-    addOverlay.classList.remove('open');
-    addOverlay.setAttribute('aria-hidden', 'true');
-    addForm.reset();
-  }
-  openAdd && openAdd.addEventListener('click', openAddModal);
-  addClose && addClose.addEventListener('click', closeAddModal);
-  addCancel && addCancel.addEventListener('click', closeAddModal);
-  addOverlay && addOverlay.addEventListener('click', (e) => { if (e.target === addOverlay) closeAddModal(); });
+}
+
+function openAddModal() {
+  addOverlay.classList.add('open');
+  addOverlay.setAttribute('aria-hidden', 'false');
+  qs('input[name="title"]', addForm).focus();
+}
+function closeAddModal() {
+  addOverlay.classList.remove('open');
+  addOverlay.setAttribute('aria-hidden', 'true');
+  addForm.reset();
+}
+
+openAdd && openAdd.addEventListener('click', openAddModal);
+addClose && addClose.addEventListener('click', closeAddModal);
+addCancel && addCancel.addEventListener('click', closeAddModal);
+addOverlay && addOverlay.addEventListener('click', (e) => {
+  if (e.target === addOverlay) closeAddModal();
+});
 
   addForm && addForm.addEventListener('submit', (ev) => {
     ev.preventDefault();
@@ -302,3 +312,4 @@
 
   document.addEventListener('DOMContentLoaded', init);
 })();
+
